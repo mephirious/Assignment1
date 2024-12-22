@@ -52,7 +52,7 @@ func (l *Library) ReturnBook(id string) {
 		return
 	}
 	book, isExist := l.CollectionOfBooks[id]
-	if isExist {
+	if !isExist {
 		fmt.Println("Library does not have book with this ID")
 		return
 	}
