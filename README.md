@@ -38,17 +38,17 @@ This assignment demonstrates the fundamentals of GoLang, covering topics such as
 ## How to run:
 1. **Library Management System:**
    ```bash
-   go run ./Library/cmd/main.go
+   go run ./cmd/Library/main.go
    ```
 2. **Shapes and Geometry:**
    ```bash
-   go run ./Shapes/cmd/main.go
+   go run ./cmd/Shapes/main.go
    ```
 3. **Employee Management System:**
    ```bash
-   go run ./Employee/cmd/main.go
+   go run ./cmd/Employee/main.go
    ```
 4. **Bank Account System:**
    ```bash
-   go run ./Bank/cmd/main.go
+   go run ./cmd/Bank/main.go
    ```
