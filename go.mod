@@ -1,3 +1,3 @@
-module github.com/NursultanNurgaliyev/Assignment1
+module github.com/NursultanNurgaliyev/BasicWebServer
 
 go 1.23.0
