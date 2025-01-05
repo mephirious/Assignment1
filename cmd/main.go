@@ -3,10 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
-	"os/signal"
-	"syscall"
-	"time"
 
 	BasicWebServer "github.com/NursultanNurgaliyev/BasicWebServer"
 )
@@ -37,14 +33,5 @@ func main() {
 		}
 	}()
 
-	signalChan := make(chan os.Signal, 1)
-	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
-	<-signalChan
-	log.Println("Shutting down server...")
-
 	server.Shutdown()
-
-	time.Sleep(1 * time.Second)
-
-	log.Println("Server gracefully stopped.")
 }

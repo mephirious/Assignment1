@@ -1,12 +1,17 @@
 package BasicWebServer
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"log/slog"
 	"net/http"
+	"os"
+	"os/signal"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
 )
 
@@ -142,7 +147,24 @@ func (s *Server) StartBackgroundWorker() {
 }
 
 func (s *Server) Shutdown() {
-	slog.Info("Shutting down server in 5 seconds")
-	time.Sleep(5 * time.Second)
+	signalChannel := make(chan os.Signal, 1)
+	signal.Notify(signalChannel, syscall.SIGINT, syscall.SIGTERM)
+
+	select {
+	case sig := <-signalChannel:
+		log.Printf("Received signal: %v", sig)
+	}
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	server := &http.Server{Addr: ":8080"}
+	err := server.Shutdown(ctx)
+	if err != nil {
+		log.Printf("Error shutting down server: %v", err)
+	} else {
+		log.Println("Server gracefully stopped.")
+	}
+
 	close(s.shutdownCh)
 }
