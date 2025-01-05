@@ -18,19 +18,17 @@ shared resources.
    
 
 ## How to run:
-1. **Library Management System:**
-   ```bash
-   go run ./cmd/Library/main.go
-   ```
-2. **Shapes and Geometry:**
-   ```bash
-   go run ./cmd/Shapes/main.go
-   ```
-3. **Employee Management System:**
-   ```bash
-   go run ./cmd/Employee/main.go
-   ```
-4. **Bank Account System:**
-   ```bash
-   go run ./cmd/Bank/main.go
-   ```
+```bash
+   go run main.go
+```
+
+## Features:
+1. **POST /data:**
+Accepts data in JSON format (e.g., {"key": "value"}) and stores it in
+an in-memory database (a map). 
+2. **GET /data:**
+Returns the entire in-memory database as JSON
+3. **GET /stats:**
+Returns the number of requests handled so far. 
+4. **DELETE /data/{key}**
+Deletes a specific key from the in-memory database. 
